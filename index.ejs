@@ -15,6 +15,37 @@
     <meta name="description" content="<%= htmlWebpackPlugin.options.description %>"/>
     <% } %>
 
+<script type="application/javascript">
+/*
+	Code for fetching search results from the API. We want to load the results as a part of the browser load.
+*/
+var global_search_results = [];
+function parse_response(data) {
+	global_search_results = data
+
+	const event = new CustomEvent('_set_search_results', {detail: global_search_results});
+	document.dispatchEvent(event)
+}
+
+function inject_result_loader(query) {
+	var script = document.createElement("script");
+	script.async = 1;
+	script.src = 'http://node0001.alexandria.org/?q='+encodeURIComponent(query)+'&cb=parse_response';
+	var first_script = document.getElementsByTagName('script')[0]
+	first_script.parentNode.insertBefore(script, first_script);
+}
+
+if (document.location.pathname == "/s") {
+	const queryString = document.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const query = urlParams.get("q");
+	if (query !== null) {
+		inject_result_loader(query);
+	}
+}
+
+</script>
+
     <% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
@@ -24,6 +55,6 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div id="app"></div>
+    <div id="app"><app /></div>
   </body>
 </html>

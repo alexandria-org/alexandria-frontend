@@ -15,7 +15,7 @@
 		},
 		data: function () {
 			return {
-				search_query: "Search here"
+				search_query: ""
 			}
 		},
 		methods: {

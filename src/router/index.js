@@ -10,6 +10,6 @@ export default new Router({
 	mode: 'history',
 	routes: [
 		{ path: '/', component: HomePage },
-		{ path: '/s', component: SearchPage },
+		{ path: '/s', component: SearchPage, props: (route) => ({ initial_search_query: route.query.q }) },
 	]
 })

@@ -1,17 +1,13 @@
 <template>
-	<div id="main_page">
-		<Header />
-		<router-view />
+	<div id="header">
+		<h1><a href="/">Alexandria.org</a></h1>
+		<small>Search the web with alexandria.org</small>
 	</div>
 </template>
 
 <script>
-	import Header from './Header.vue'
 	export default {
 		name: 'app',
-		components: {
-			Header
-		},
 		props: {
 		},
 		data: function () {
@@ -44,7 +40,18 @@
 <!-- Scoped component css -->
 <!-- It only affect current component -->
 <style scoped>
-	#main_page {
-		margin: 8px;
+
+	#header {
+		margin-bottom: 0.5em;
 	}
+
+	h1 {
+		margin: 0 0 0 0;
+	}
+
+	h1 a {
+		text-decoration: none;
+		color: #000;
+	}
+
 </style>

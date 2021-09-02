@@ -17,11 +17,13 @@
     "email": "josefcullhed@gmail.com"
   },
   "dependencies": {
+    "inter-ui": "^3.19.3",
     "normalize.css": "^7.0.0",
     "object-assign": "^4.1.1",
     "offline-plugin": "^4.8.0",
     "promise-polyfill": "^6.0.2",
-    "vue-router": "^3.5.2"
+    "vue-router": "^3.5.2",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "poi": "^9.0.0",
