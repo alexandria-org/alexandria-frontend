@@ -1,6 +1,7 @@
 <template>
 	<div id="search-result-list">
-		<SearchResult v-for="result in search_results" :url="result.url" :title="result.title" :snippet="result.snippet" />
+		<SearchResult v-for="result in search_results" :key="result.url" :url="result.url" :display_url="result.display_url" :title="result.title"
+			:snippet="result.snippet" />
 	</div>
 </template>
 
@@ -30,6 +31,7 @@
 <!-- It only affect current component -->
 <style scoped>
 	#search-result-list {
+		width: 100%;
 		max-width: 600px;
 	}
 </style>

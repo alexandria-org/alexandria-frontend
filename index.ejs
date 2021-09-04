@@ -3,45 +3,45 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title><%= htmlWebpackPlugin.options.title %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
+    <title>Alexandria.org</title>
     
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#4DBA87">
     
 
     <% if (htmlWebpackPlugin.options.description) { %>
-    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>"/>
+    <meta name="description" content="Search the web with alexandria.org"/>
     <% } %>
 
 <script type="application/javascript">
 /*
+	Alexandria.org
 	Code for fetching search results from the API. We want to load the results as a part of the browser load.
 */
 var global_search_results = [];
 function parse_response(data) {
-	global_search_results = data
+	global_search_results = data;
 
 	const event = new CustomEvent('_set_search_results', {detail: global_search_results});
-	document.dispatchEvent(event)
+	document.dispatchEvent(event);
 }
 
-function inject_result_loader(query) {
+function inject_result_loader(query, current_page) {
 	var script = document.createElement("script");
 	script.async = 1;
-	script.src = 'http://node0001.alexandria.org/?q='+encodeURIComponent(query)+'&cb=parse_response';
-	var first_script = document.getElementsByTagName('script')[0]
+	script.src = 'https://api.alexandria.org/?q='+encodeURIComponent(query)+'&p='+current_page+'&cb=parse_response';
+	var first_script = document.getElementsByTagName('script')[0];
 	first_script.parentNode.insertBefore(script, first_script);
 }
 
-if (document.location.pathname == "/s") {
-	const queryString = document.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	const query = urlParams.get("q");
-	if (query !== null) {
-		inject_result_loader(query);
-	}
+const queryString = document.location.search;
+const urlParams = new URLSearchParams(queryString);
+const query = urlParams.get("q");
+const current_page = urlParams.get("p") || 1;
+if (query !== null && query.trim() != "") {
+	inject_result_loader(query, current_page);
 }
 
 </script>

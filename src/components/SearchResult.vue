@@ -3,7 +3,7 @@
 		<div class="search-result-title">
 			<b><a :href="url">{{ title }}</a></b>
 		</div>
-		<div class="search-result-url">{{ url }}</div>
+		<div class="search-result-url">{{ display_url }}</div>
 		<div class="snippet">{{ snippet }} </div>
 	</div>
 </template>
@@ -15,6 +15,9 @@
 		},
 		props: {
 			url: {
+				type: String
+			},
+			display_url: {
 				type: String
 			},
 			title: {
@@ -43,9 +46,15 @@
 
 	.search-result-title {
 		font-size: 1.15em;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 
 	.search-result-url {
 		color: green;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 </style>

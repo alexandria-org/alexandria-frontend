@@ -39,6 +39,10 @@
 	code::before, code::after {
 		content: '`';
 	}
+
+	.clearfix {
+		clear: both;
+	}
 </style>
 
 <!-- Scoped component css -->

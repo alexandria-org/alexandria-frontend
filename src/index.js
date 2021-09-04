@@ -10,11 +10,15 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    search_results: global_search_results
+    search_results: global_search_results,
+	page_max: 1,
+	total_found: 0
   },
   mutations: {
     set_search_results (state, search_results) {
-      state.search_results = search_results
+      state.search_results = search_results.results;
+      state.page_max = search_results.page_max;
+      state.total_found = search_results.total_found;
     }
   }
 })
