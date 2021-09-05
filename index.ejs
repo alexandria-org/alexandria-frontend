@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-    <title>Alexandria.org</title>
+    <title>Alexandria Search</title>
     
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#4DBA87">
@@ -20,7 +20,7 @@
 	Alexandria.org
 	Code for fetching search results from the API. We want to load the results as a part of the browser load.
 */
-var global_search_results = [];
+var global_search_results = {results: [], page_max: 1, total_found: 0};
 function parse_response(data) {
 	global_search_results = data;
 
@@ -41,6 +41,7 @@ const urlParams = new URLSearchParams(queryString);
 const query = urlParams.get("q");
 const current_page = urlParams.get("p") || 1;
 if (query !== null && query.trim() != "") {
+	document.title = query + " - Alexandria Search";
 	inject_result_loader(query, current_page);
 }
 

@@ -18,16 +18,10 @@
 			Paginator
 		},
 		props: {
-			initial_search_query: {
-				type: String
-			},
-			current_page: {
-				type: Number
-			}
 		},
 		data: function () {
 			return {
-				search_query: this.initial_search_query
+				search_query: this.$store.state.initial_search_query
 			}
 		},
 		computed: {
@@ -36,6 +30,12 @@
 			},
 			page_max() {
 				return this.$store.state.page_max
+			},
+			initial_search_query() {
+				return this.$store.state.initial_search_query
+			},
+			current_page() {
+				return this.$store.state.current_page
 			}
 		},
 		methods: {
