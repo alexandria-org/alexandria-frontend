@@ -1,7 +1,7 @@
 <template>
 	<div id="paginator">
 		<template v-if="page_max > 1">
-			<a v-if="current_page > 1" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page - 1)">Previous</a>
+			<a v-if="current_page > 1" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page - 1)">Prev</a>
 			<a v-for="page in pages" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + page"
 				:class="{active: page == current_page}">{{ page }}</a>
 			<a v-if="current_page < page_max" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page + 1)">Next</a>
@@ -42,6 +42,9 @@
 <!-- Scoped component css -->
 <!-- It only affect current component -->
 <style scoped>
+	#paginator {
+		margin: 0 0 4em 0;
+	}
 	#paginator a {
 		margin: 0 0.5em;
 	}
