@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-    <title>Alexandria Search</title>
-    
-		<link rel="search" type="application/opensearchdescription+xml" title="alexandria.org" href="/xml_description.xml">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#4DBA87">
-    
+		<title>Alexandria Search</title>
+<!--
+ *
+ * Alexandria.org
+ *
+ * Copyright (c) 2021 Josef Cullhed, <info@alexandria.org>, et al.
+ *
+ * View source code on https://github.com/alexandria-org
+ *
+-->
 
-    <% if (htmlWebpackPlugin.options.description) { %>
-    <meta name="description" content="Search the web with alexandria.org"/>
-    <% } %>
+		<link rel="search" type="application/opensearchdescription+xml" title="alexandria.org" href="/xml_description.xml">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="theme-color" content="#4DBA87">
+
+		<% if (htmlWebpackPlugin.options.description) { %>
+		<meta name="description" content="Search the web with alexandria.org"/>
+		<% } %>
 
 <script type="application/javascript">
 /*
@@ -48,15 +56,15 @@ if (query !== null && query.trim() != "") {
 
 </script>
 
-    <% for (var chunk of webpack.chunks) {
-        for (var file of chunk.files) {
-          if (file.match(/\.(js|css)$/)) { %>
-    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="app"><app /></div>
-  </body>
+		<% for (var chunk of webpack.chunks) {
+				for (var file of chunk.files) {
+					if (file.match(/\.(js|css)$/)) { %>
+		<link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+	</head>
+	<body>
+		<noscript>
+			You need to enable JavaScript to run this app.
+		</noscript>
+		<div id="app"><app /></div>
+	</body>
 </html>
