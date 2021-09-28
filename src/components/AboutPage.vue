@@ -31,7 +31,7 @@
 		Alexandria.org is a non-profit, ad free search engine. Our goal is to provide the best available information without compromise.
 		</p>
 		<p>
-		The index is built on data from Common Crawl and the engine is written in C++.
+		The index is built on data from Common Crawl and the engine is written in C++. The source code is available <a href="https://github.com/alexandria-org">here</a>.
 		</p>
 		<p>
 		We are still at an early stage of development and running the search engine on a shoestring budget.
