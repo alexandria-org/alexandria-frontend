@@ -29,7 +29,7 @@
 	Alexandria.org
 	Code for fetching search results from the API. We want to load the results as a part of the browser load.
 */
-var global_search_results = {results: [], page_max: 1, total_found: 0};
+var global_search_results = {results: [], page_max: 1, total_found: 0, time_ms: 0};
 function parse_response(data) {
 	global_search_results = data;
 

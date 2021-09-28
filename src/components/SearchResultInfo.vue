@@ -1,4 +1,4 @@
-/*
+<!--
  * MIT License
  *
  * Alexandria.org
@@ -22,46 +22,46 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- */
+-->
+<template>
+	<div class="search-result-info" v-if="search_results.length > 0">
+		Found {{total_found}} results in {{Math.round(time_ms/10.0)/100}}s
+	</div>
+</template>
 
-import Vue from 'vue/dist/vue.js'
-import Vuex from 'vuex'
-import App from './components/App.vue'
-import router from './router'
-import VueRouter from 'vue-router'
+<script>
+	export default {
+		name: 'SearchResultInfo',
+		components: {
+		},
+		props: {
+			search_results: {
+				type: Array
+			},
+			total_found: {
+				type: Number
+			},
+			time_ms: {
+				type: Number
+			}
+		},
+		data: function () {
+			return {
+			}
+		},
+		computed: {
+			
+		}
+	}
+</script>
 
-Vue.config.productionTip = false
-Vue.use(VueRouter)
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  state: {
-    search_results: global_search_results.results,
-	page_max: global_search_results.page_max,
-	total_found: global_search_results.total_found,
-	time_ms: global_search_results.time_ms,
-	current_page: current_page || 1,
-	initial_search_query: query || ""
-  },
-  mutations: {
-    set_search_results (state, search_results) {
-      state.search_results = search_results.results;
-      state.page_max = search_results.page_max;
-      state.total_found = search_results.total_found;
-      state.time_ms = search_results.time_ms;
-    }
-  }
-})
-
-new Vue({
-	router,
-	el: '#app',
-	store: store,
-	components: {App},
-	data: {
-	},
-})
-
-document.addEventListener("_set_search_results", function (event) {
-	store.commit('set_search_results', event.detail)
-})
+<!-- Scoped component css -->
+<!-- It only affect current component -->
+<style scoped>
+	.search-result-info {
+		width: 100%;
+		max-width: 600px;
+		font-size: 80%;
+		margin-bottom: 1em;
+	}
+</style>
