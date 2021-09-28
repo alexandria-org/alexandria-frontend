@@ -26,27 +26,52 @@
 <template>
 	<div id="search-page">
 		<SearchForm :search_query="search_query" />
-		<SearchResultList :search_results="search_results" />
+		<SearchResultInfo :search_results="search_results" :total_found="total_found" :time_ms="time_ms" />
+		<div class="search-column">
+			<SearchResultList :search_results="search_results" />
+		</div>
+		<AdviceSidebar :advices="advices" />
 		<Paginator :page_max="page_max" :current_page="current_page" :search_query="initial_search_query" />
 	</div>
 </template>
 
 <script>
 	import SearchForm from './SearchForm.vue';
+	import SearchResultInfo from './SearchResultInfo.vue';
 	import SearchResultList from './SearchResultList.vue';
+	import AdviceSidebar from './AdviceSidebar.vue';
 	import Paginator from './Paginator.vue';
 	export default {
 		name: 'SearchPage',
 		components: {
 			SearchForm,
 			SearchResultList,
+			SearchResultInfo,
+			AdviceSidebar,
 			Paginator
 		},
 		props: {
 		},
 		data: function () {
 			return {
-				search_query: this.$store.state.initial_search_query
+				search_query: this.$store.state.initial_search_query,
+				advices: [
+					{
+						title: "Läs olika nyheter",
+						snippet: "Om man läser flera olika nyhetskällor får man en mer nyanserad bild...",
+						author: "Professor Eisenberg"
+					},
+					{
+						title: "Läs inte Aftonbladet",
+						snippet: "Om man läser flera olika nyhetskällor får man en mer nyanserad bild...",
+						author: "Professor Heiss"
+					},
+					{
+						title: "Kvartal.se",
+						snippet: "Bra journalistik som tar upp samhällsproblem på ett nyktert sätt.",
+						author: "Professor Goldman"
+					},
+				]
 			}
 		},
 		computed: {
@@ -55,6 +80,12 @@
 			},
 			page_max() {
 				return this.$store.state.page_max
+			},
+			total_found() {
+				return this.$store.state.total_found
+			},
+			time_ms() {
+				return this.$store.state.time_ms
 			},
 			initial_search_query() {
 				return this.$store.state.initial_search_query
@@ -74,4 +105,7 @@
 <!-- Scoped component css -->
 <!-- It only affect current component -->
 <style scoped>
+	.search-column {
+		float: left;
+	}
 </style>

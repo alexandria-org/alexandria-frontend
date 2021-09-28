@@ -58,5 +58,7 @@
 	#search-result-list {
 		width: 100%;
 		max-width: 600px;
+		float: left;
+		padding: 0.5em;
 	}
 </style>

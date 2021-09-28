@@ -24,30 +24,30 @@
  * SOFTWARE.
 -->
 <template>
-	<div id="paginator">
-		<template v-if="page_max > 1">
-			<a v-if="current_page > 1" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page - 1)">Prev</a>
-			<a v-for="page in pages" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + page"
-				:class="{active: page == current_page}">{{ page }}</a>
-			<a v-if="current_page < page_max" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page + 1)">Next</a>
-		</template>
+	<div id="advice-top">
+		<small>Advice</small>
+		<div v-for="advice in advices" class="advice">
+			<div class="advice-title">
+				<b>{{ advice.title }}</b>
+			</div>
+			<div class="snippet">
+				{{ advice.snippet }}
+			</div>
+			<div class="author">
+				{{ advice.author }}
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'Paginator',
+		name: 'AdviceTop',
 		components: {
 		},
 		props: {
-			search_query: {
-				type: String
-			},
-			page_max: {
-				type: Number
-			},
-			current_page: {
-				type: Number
+			advices: {
+				type: Array
 			}
 		},
 		data: function () {
@@ -55,11 +55,9 @@
 			}
 		},
 		computed: {
-			pages: function () {
-				return [...Array(this.page_max).keys()].map(function (e) { return e+1 })
-			}
 		},
 		methods: {
+			
 		}
 	}
 </script>
@@ -67,16 +65,35 @@
 <!-- Scoped component css -->
 <!-- It only affect current component -->
 <style scoped>
-	#paginator {
-		clear: both;
-		margin: 0 0 4em 0;
-	}
-	#paginator a {
-		margin: 0 0.5em;
+
+	small {
+		position: absolute;
+		right: 0.5em;
+		top: 0.5em;
 	}
 
-	#paginator a.active {
-		font-weight: bold;
-		text-decoration: none;
+	#advice-top {
+		max-width: 600px;
+		background: #FFFFAA;
+		padding: 0.5em;
+		position: relative;
 	}
+
+	.advice {
+		margin-bottom: 1em;
+	}
+
+	.advice:last-child {
+		margin-bottom: 0;
+	}
+
+	.advice-title {
+		font-size: 1.15em;
+	}
+
+	.author {
+		color: green;
+		font-size: 80%;
+	}
+
 </style>
