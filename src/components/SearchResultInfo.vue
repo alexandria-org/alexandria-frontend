@@ -25,7 +25,7 @@
 -->
 <template>
 	<div class="search-result-info" v-if="search_results.length > 0">
-		Found {{total_found}} results in {{Math.round(time_ms/10.0)/100}}s
+		Found {{total_found_with_separator}} results in {{Math.round(time_ms/10.0)/100}}s
 	</div>
 </template>
 
@@ -50,7 +50,9 @@
 			}
 		},
 		computed: {
-			
+			total_found_with_separator() {
+				return this.total_found.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			}
 		}
 	}
 </script>

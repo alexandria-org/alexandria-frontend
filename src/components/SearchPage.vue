@@ -26,6 +26,7 @@
 <template>
 	<div id="search-page">
 		<SearchForm :search_query="search_query" />
+		<SearchResultInfo :search_results="search_results" :total_found="total_found" :time_ms="time_ms" />
 		<SearchResultList :search_results="search_results" />
 		<Paginator :page_max="page_max" :current_page="current_page" :search_query="initial_search_query" />
 	</div>
@@ -33,6 +34,7 @@
 
 <script>
 	import SearchForm from './SearchForm.vue';
+	import SearchResultInfo from './SearchResultInfo.vue';
 	import SearchResultList from './SearchResultList.vue';
 	import Paginator from './Paginator.vue';
 	export default {
@@ -40,6 +42,7 @@
 		components: {
 			SearchForm,
 			SearchResultList,
+			SearchResultInfo,
 			Paginator
 		},
 		props: {
@@ -55,6 +58,12 @@
 			},
 			page_max() {
 				return this.$store.state.page_max
+			},
+			total_found() {
+				return this.$store.state.total_found
+			},
+			time_ms() {
+				return this.$store.state.time_ms
 			},
 			initial_search_query() {
 				return this.$store.state.initial_search_query
