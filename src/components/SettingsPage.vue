@@ -23,67 +23,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
 -->
+
 <template>
-	<div class="search-result">
-		<div class="search-result-title">
-			<b><a :href="url" :ping="link_ping ? ping : null">{{ title }}</a></b>
+	<div id="settings-page">
+		<hr />
+		<h2>Privacy settings</h2>
+		<p>The default behaviour on alexandria.org is to store the searches together with your IP address. When you click on a search result for a
+			query we also store which search result you clicked on. We do this to be able to measure and improve our search results.</p>
+		<p>We will never sell or with intent share this data with a third party.</p>
+		<p>We value privacy, so you can disable all tracking and use our service completely anonymously by unticking the checkboxes below.</p>
+		<div>
+			<label>Store IP address with search queries: </label>
+			<input type="checkbox" id="checkbox1" true-value="1" false-value="0" v-model="store_ip">
 		</div>
-		<div class="search-result-url">{{ display_url }}</div>
-		<div class="snippet">{{ snippet }} </div>
+		<div>
+			<label>Store clicks on search results together with search query: </label>
+			<input type="checkbox" id="checkbox2" true-value="1" false-value="0" v-model="link_ping">
+		</div>
+		<p>If these settings are modified they will be stored in the local storage of your browser.</p>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'SearchResult',
+		name: 'SettingsPage',
 		components: {
 		},
 		props: {
-			url: {
-				type: String
-			},
-			display_url: {
-				type: String
-			},
-			title: {
-				type: String
-			},
-			snippet: {
-				type: String
-			},
-			position: {
-				type: Number,
-				default: 0
-			}
 		},
 		data: function () {
 			return {
-				search_query: this.$store.state.initial_search_query
 			}
 		},
 		computed: {
-			link_ping() {
-				return this.$store.state.link_ping == 1;
+			store_ip: {
+				get() {
+					return this.$store.state.store_ip;
+				},
+				set(value) {
+					this.$store.commit('set_store_ip', value)
+				}
 			},
-			ping() {
-				let data = {
-					u: this.url,
-					q: this.search_query,
-					p: 1 + this.position + this.page_max * (this.current_page - 1)
-				};
-				return process.env.ALEXANDRIA_API+"/ping?data=" + this.url_base64_encode(data);
-			},
-			page_max() {
-				return this.$store.state.page_max
-			},
-			current_page() {
-				return this.$store.state.current_page
+			link_ping: {
+				get() {
+					return this.$store.state.link_ping;
+				},
+				set(value) {
+					this.$store.commit('set_link_ping', value)
+				}
 			}
 		},
 		methods: {
-			url_base64_encode(data) {
-				return encodeURIComponent(window.btoa(unescape(encodeURIComponent(JSON.stringify(data)))));
-			}
 		}
 	}
 </script>
@@ -91,21 +81,12 @@
 <!-- Scoped component css -->
 <!-- It only affect current component -->
 <style scoped>
-	.search-result {
-		margin-bottom: 1em;
+	#settings-page {
+		max-width: 600px;
 	}
 
-	.search-result-title {
-		font-size: 1.15em;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-
-	.search-result-url {
-		color: green;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
+	input {
+		top: 1px;
+		position: relative;
 	}
 </style>

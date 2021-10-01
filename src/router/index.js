@@ -28,6 +28,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import SearchPage from './../components/SearchPage.vue'
 import AboutPage from './../components/AboutPage.vue'
+import SettingsPage from './../components/SettingsPage.vue'
 import NotFoundPage from './../components/NotFoundPage.vue'
 
 Vue.use(Router)
@@ -36,6 +37,7 @@ export default new Router({
 	mode: 'history',
 	routes: [
 		{ path: '/about', component: AboutPage },
+		{ path: '/settings', component: SettingsPage },
 		{ path: '/', component: SearchPage },
 		{ path: '/*', component: NotFoundPage },
 	]

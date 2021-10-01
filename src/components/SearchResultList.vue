@@ -25,8 +25,8 @@
 -->
 <template>
 	<div id="search-result-list">
-		<SearchResult v-for="result in search_results" :key="result.url" :url="result.url" :display_url="result.display_url" :title="result.title"
-			:snippet="result.snippet" />
+		<SearchResult v-for="(result, position) in search_results" :key="result.url" :url="result.url" :display_url="result.display_url"
+			:title="result.title" :snippet="result.snippet" :position="position" :page="current_page" />
 	</div>
 </template>
 
@@ -40,6 +40,10 @@
 		props: {
 			search_results: {
 				type: Array
+			},
+			current_page: {
+				type: Number,
+				default: 1
 			}
 		},
 		data: function () {
