@@ -42,6 +42,7 @@ const store = new Vuex.Store({
 		time_ms: global_search_results.time_ms,
 		current_page: current_page || 1,
 		initial_search_query: query || "",
+		cluster: cluster,
 		store_ip: localStorage.getItem('store_ip') === null ? 1 : localStorage.getItem('store_ip'),
 		link_ping: localStorage.getItem('link_ping') === null ? 1 : localStorage.getItem('link_ping'),
 	},

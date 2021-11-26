@@ -25,7 +25,7 @@
 -->
 <template>
 	<div id="search-page">
-		<SearchForm :search_query="search_query" />
+		<SearchForm :search_query="search_query" :cluster="cluster" />
 		<SearchResultInfo :search_results="search_results" :total_found="total_found" :time_ms="time_ms" />
 		<SearchResultList :search_results="search_results" />
 		<Paginator :page_max="page_max" :current_page="current_page" :search_query="initial_search_query" />
@@ -49,7 +49,8 @@
 		},
 		data: function () {
 			return {
-				search_query: this.$store.state.initial_search_query
+				search_query: this.$store.state.initial_search_query,
+				cluster: this.$store.state.cluster
 			}
 		},
 		computed: {
