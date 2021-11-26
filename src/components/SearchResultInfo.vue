@@ -51,7 +51,7 @@
 		},
 		computed: {
 			total_found_with_separator() {
-				return this.total_found.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				return this.total_found.toLocaleString('en', {useGrouping: true});
 			}
 		}
 	}

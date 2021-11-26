@@ -37,10 +37,12 @@ function parse_response(data) {
 	document.dispatchEvent(event);
 }
 
-function inject_result_loader(query, current_page) {
+function inject_result_loader(cluster, query, current_page) {
 	var script = document.createElement("script");
 	script.async = 1;
-	script.src = 'https://api.alexandria.org/?q='+encodeURIComponent(query)+'&p='+current_page+'&cb=parse_response';
+	var cluster_param = "";
+	if (cluster !== null) cluster_param = '&c='+cluster;
+	script.src = 'https://api.alexandria.org/?q='+encodeURIComponent(query)+'&p='+current_page+cluster_param+'&cb=parse_response';
 	var first_script = document.getElementsByTagName('script')[0];
 	first_script.parentNode.insertBefore(script, first_script);
 }
@@ -48,10 +50,11 @@ function inject_result_loader(query, current_page) {
 const queryString = document.location.search;
 const urlParams = new URLSearchParams(queryString);
 const query = urlParams.get("q");
+const cluster = urlParams.get("c");
 const current_page = urlParams.get("p") || 1;
 if (query !== null && query.trim() != "") {
 	document.title = query + " - Alexandria Search";
-	inject_result_loader(query, current_page);
+	inject_result_loader(cluster, query, current_page);
 }
 
 </script>
