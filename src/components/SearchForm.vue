@@ -27,6 +27,7 @@
 	<div id="search-form">
 		<form className="search-form" method="get" action="/">
 			<input type="hidden" name="c" v-bind:value="cluster" />
+			<input type="hidden" name="r" v-bind:value="post_processor" />
 			<input type="text" v-model="search_query" v-on:input="$emit('update-search-query', $event.target.value)" name="q"
 				autofocus="true" autocapitalize="false" title="Search" aria-label="Search" />
 			<button className="search-box-button" type="submit">Search</button>
@@ -43,6 +44,10 @@
 				type: String
 			},
 			cluster: {
+				type: String,
+				default: ''
+			},
+			post_processor: {
 				type: String,
 				default: ''
 			}
