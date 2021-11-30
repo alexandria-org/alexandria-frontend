@@ -6,7 +6,7 @@
 Install nodejs
 https://nodejs.org/en/download/
 
-Open new power shell as an administrator. Run
+Open new power shell as an administrator. Run:
 ```
 npm install --global yarn
 ```
@@ -16,7 +16,7 @@ Allow scripts to run on Windows:
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 ```
 
-Navigate to repository. Run
+Navigate to repository. Run:
 ```
 yarn install
 yarn dev
