@@ -26,10 +26,10 @@
 <template>
 	<div id="paginator">
 		<template v-if="page_max > 1">
-			<a v-if="current_page > 1" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page - 1)">Prev</a>
+			<a v-if="current_page > 1" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + previous_page">Prev</a>
 			<a v-for="page in pages" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + page"
 				:class="{active: page == current_page}">{{ page }}</a>
-			<a v-if="current_page < page_max" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + (current_page + 1)">Next</a>
+			<a v-if="current_page < page_max" :href="'/?q=' + encodeURIComponent(search_query) + '&p=' + next_page">Next</a>
 		</template>
 	</div>
 </template>
@@ -57,6 +57,12 @@
 		computed: {
 			pages: function () {
 				return [...Array(this.page_max).keys()].map(function (e) { return e+1 })
+			},
+			next_page: function () {
+				return parseInt(this.current_page) + 1;
+			},
+			previous_page: function () {
+				return parseInt(this.current_page) - 1;
 			}
 		},
 		methods: {
