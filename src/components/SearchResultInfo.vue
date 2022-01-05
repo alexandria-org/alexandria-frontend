@@ -24,8 +24,10 @@
  * SOFTWARE.
 -->
 <template>
-	<div class="search-result-info" v-if="search_results.length > 0">
-		Found {{total_found_with_separator}} results in {{Math.round(time_ms/10.0)/100}}s
+	<div class="search-result-info-wrapper" v-if="search_results.length > 0">
+		<div class="search-result-info">
+			Found {{total_found_with_separator}} results in {{Math.round(time_ms/10.0)/100}}s
+		</div>
 	</div>
 </template>
 
@@ -60,10 +62,20 @@
 <!-- Scoped component css -->
 <!-- It only affect current component -->
 <style scoped>
+	.search-result-info-wrapper {
+		position: relative;
+	}
 	.search-result-info {
 		width: 100%;
 		max-width: 600px;
 		font-size: 80%;
 		margin-bottom: 1em;
+	}
+	@media only screen and (max-width: 600px) {
+		.search-result-info {
+			position: absolute;
+			top: -30px;
+			width: 60%;
+		}
 	}
 </style>
