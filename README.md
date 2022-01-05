@@ -2,6 +2,27 @@
 
 > Frontend for Alexandria.org
 
+## Install yarn on windows
+Install nodejs
+https://nodejs.org/en/download/
+
+Open new power shell as an administrator. Run:
+```
+npm install --global yarn
+```
+
+Allow scripts to run on Windows:
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+```
+
+Navigate to repository. Run:
+```
+yarn install
+yarn dev
+```
+You are ready to go.
+
 ## Commands
 
 You can replace `yarn` with `npm run` here.
