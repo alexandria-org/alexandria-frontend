@@ -3,6 +3,6 @@
 		<a href="/settings">Settings</a>
 		<a href="/about">About</a>
 	</nav>
-	<h1><a href="/">Alexandria.org</a></h1>
+	<h1><a href="/">Alexandria<span style="color: #555;">.org</span></a></h1>
 	<small>Search the web with alexandria.org</small>
 </div>

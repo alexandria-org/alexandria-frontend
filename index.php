@@ -5,11 +5,11 @@ function escape($str) {
 }
 
 function cluster() {
-	return escape($_GET['c'] ?? 'a');
+	return escape($_GET['c'] ?? '');
 }
 
 function post_processor() {
-	return escape($_GET['r'] ?? 'a');
+	return escape($_GET['r'] ?? '');
 }
 
 function search_query() {

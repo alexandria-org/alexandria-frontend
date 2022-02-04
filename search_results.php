@@ -21,7 +21,7 @@ function num_results($res) {
 }
 
 $ch = curl_init();
-$url = "https://api.alexandria.org/?q=" . urlencode(search_query()) . "&c=". urlencode(cluster()) . "&r=" . urlencode(post_processor());
+$url = "https://api.alexandria.org/?q=" . urlencode(search_query()) . "&c=". urlencode(cluster()) . "&r=" . urlencode(post_processor()) . "&p=" . urlencode(current_page());
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($ch);

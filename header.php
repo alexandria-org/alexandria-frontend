@@ -14,7 +14,9 @@
  * View source code on https://github.com/alexandria-org
  *
 -->
-	<link rel="search" type="application/opensearchdescription+xml" title="alexandria.org" href="/xml_description.xml">
+	<link rel="search" type="application/opensearchdescription+xml" title="alexandria.org" href="/assets/xml_description.xml">
+	<link rel="manifest" href="/assets/manifest.json">
+	<meta name="theme-color" content="#000000">
 	<meta name="description" content="Search the web with alexandria.org - the open source search engine">
 <style>
 /*
