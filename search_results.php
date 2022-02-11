@@ -13,15 +13,19 @@ function next_page() {
 }
 
 function time_seconds($res) {
-	return number_format($res->time_ms / 1000, 2);
+	return number_format($res->time_ms/1000, 2);
 }
 
 function num_results($res) {
 	return number_format($res->total_found ?? 0);
 }
 
+function current_ip() {
+	return $_SERVER["REMOTE_ADDR"];
+}
+
 $ch = curl_init();
-$url = "https://api.alexandria.org/?q=" . urlencode(search_query()) . "&c=". urlencode(cluster()) . "&r=" . urlencode(post_processor()) . "&p=" . urlencode(current_page());
+$url = "https://api.alexandria.org/?q=" . urlencode(search_query()) . "&c=". urlencode(cluster()) . "&r=" . urlencode(post_processor()) . "&p=" . urlencode(current_page()) . "&ip=" . urlencode(current_ip());
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $json = curl_exec($ch);
