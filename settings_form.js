@@ -13,8 +13,8 @@ document.getElementById("save").addEventListener("click", (e) => {
 });
 
 function update_save_button() {
-	if (document.getElementById("store_ip").checked != get_setting("_store_clicks", true) ||
-			document.getElementById("store_clicks").checked != get_setting("_store_clicks", true)) {
+	if (document.getElementById("store_ip").checked !== get_setting("_store_ip", true) ||
+			document.getElementById("store_clicks").checked !== get_setting("_store_clicks", true)) {
 
 		document.getElementById("save").disabled = false
 
