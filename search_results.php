@@ -46,7 +46,7 @@ $res = json_decode($json);
 			<div class="search-result">
 				<div class="search-result-title">
 					<b>
-						<a href="<?=escape($result->url)?>"><?=escape($result->title)?></a>
+						<a href="<?=escape($result->url)?>" ping="<?=escape($result->ping)?>"><?=escape($result->title)?></a>
 					</b>
 				</div>
 				<div class="search-result-url"><?=escape($result->url)?></div>
@@ -68,3 +68,4 @@ $res = json_decode($json);
 	<?php } ?>
 	</div>
 </div>
+<?php include("search_results.js") ?>

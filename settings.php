@@ -12,14 +12,22 @@ include("menu.php");
 
 	<p>We value privacy, so you can disable all tracking and use our service completely anonymously by unticking the checkboxes below.</p>
 
-	<div>
-		<label>Store IP address with search queries: </label>
-		<input type="checkbox" true-value="1" false-value="0">
-	</div>
-	<div>
-		<label>Store clicks on search results together with search query: </label>
-		<input type="checkbox" true-value="1" false-value="0">
-	</div>
+	<form>
+		<div>
+			<label>Store IP address with search queries: </label>
+			<input type="checkbox" id="store_ip" true-value="1" false-value="0">
+		</div>
+		<div>
+			<label>Store clicks on search results together with search query: </label>
+			<input type="checkbox" id="store_clicks" true-value="1" false-value="0">
+		</div>
+
+		<div>
+			<button id="save" disabled>Save</button>
+		</div>
+	</form>
+
+	<?php include("settings_form.js")?>
 
 	<p>If these settings are modified they will be stored in the local storage of your browser.</p>
 
