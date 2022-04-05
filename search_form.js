@@ -1,7 +1,7 @@
 <script>
 
 window.addEventListener("load", () => {
-	document.getElementById("anonymous").value = JSON.parse(localStorage.getItem("_store_ip")) ? 0 : 1
+	document.getElementById("anonymous").value = get_setting("_store_ip", true) ? 0 : 1
 })
 
 </script>

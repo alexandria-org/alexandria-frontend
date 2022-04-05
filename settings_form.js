@@ -13,8 +13,8 @@ document.getElementById("save").addEventListener("click", (e) => {
 });
 
 function update_save_button() {
-	if (document.getElementById("store_ip").checked != localStorage.getItem("_store_ip") ||
-			document.getElementById("store_clicks").checked != localStorage.getItem("_store_clicks")) {
+	if (document.getElementById("store_ip").checked != get_setting("_store_clicks", true) ||
+			document.getElementById("store_clicks").checked != get_setting("_store_clicks", true)) {
 
 		document.getElementById("save").disabled = false
 
@@ -34,10 +34,10 @@ document.getElementById("store_clicks").addEventListener("change", (e) => {
 })
 
 window.addEventListener('load', () => {
-	var checked1 = JSON.parse(localStorage.getItem("_store_ip"))
+	var checked1 = get_setting("_store_ip", true)
 	document.getElementById("store_ip").checked = checked1
 
-	var checked2 = JSON.parse(localStorage.getItem("_store_clicks"))
+	var checked2 = get_setting("_store_clicks", true)
 	document.getElementById("store_clicks").checked = checked2
 })
 

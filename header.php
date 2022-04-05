@@ -112,5 +112,6 @@ nav a {
 	margin: 0 .4em;
 }
 </style>
+<?php include("functions.js") ?>
 </head>
 <body>
