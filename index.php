@@ -50,4 +50,4 @@ include("header.php");
 	<?php include("search_form.php"); ?>
 </div>
 
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>
