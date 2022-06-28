@@ -1,0 +1,28 @@
+
+ html {
+	background: #000;
+	color: #ccc;
+}
+
+a {
+	color: #ccc;
+}
+
+h1 a {
+	color: #ccc;
+}
+
+#search-form input {
+	background: #333;
+	color: #ccc;
+	outline: #ccc;
+}
+
+button {
+	background: #333;
+	color: #ccc;
+}
+
+.search-result-url {
+	color: green;
+}
