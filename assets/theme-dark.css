@@ -1,5 +1,5 @@
 
- html {
+html {
 	background: #000;
 	color: #ccc;
 }
@@ -10,6 +10,10 @@ a {
 
 h1 a {
 	color: #ccc;
+}
+
+h1 a img {
+	background: #ccc;
 }
 
 #search-form input {
