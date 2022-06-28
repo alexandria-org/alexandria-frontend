@@ -12,10 +12,6 @@ h1 a {
 	color: #ccc;
 }
 
-h1 a img {
-	background: #ccc;
-}
-
 #search-form input {
 	background: #333;
 	color: #ccc;
@@ -29,4 +25,12 @@ button {
 
 .search-result-url {
 	color: green;
+}
+
+.logo-light {
+	display: none;
+}
+
+.logo-dark {
+	display: block;
 }

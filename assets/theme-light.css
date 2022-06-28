@@ -12,7 +12,15 @@
 	background: #fff;
 }
  
- .search-result-url {
-	 color: green;
- }
+.search-result-url {
+    color: green;
+}
+
+.logo-light {
+	display: block;
+}
+
+.logo-dark {
+	display: none;
+}
  
