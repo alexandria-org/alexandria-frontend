@@ -73,6 +73,7 @@ h1 a {
 nav {
 	float: right;
 	max-width: 600px;
+	margin-top: 10px;
 }
 nav a {
 	margin: 0 0.35em;
